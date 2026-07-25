@@ -15,11 +15,12 @@ script = ExtResource("3_ow5a4")
 
 [node name="Enemy" parent="World" unique_id=773616265 instance=ExtResource("4_ow5a4")]
 unique_name_in_owner = true
-position = Vector2(-447, 304)
+position = Vector2(-540, 647)
 
 [node name="EnemySpawnTimer" type="Timer" parent="World" unique_id=1663083597]
 unique_name_in_owner = true
 autostart = true
 
 [node name="Interface" parent="." unique_id=2088915800 instance=ExtResource("4_hujxm")]
+visible = false
 script = ExtResource("5_yyfjg")
