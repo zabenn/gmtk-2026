@@ -6,3 +6,7 @@
 
 [node name="Blast" parent="." unique_id=1017176358 instance=ExtResource("1_dphjl")]
 position = Vector2(960, 540)
+
+[node name="EnemySpawnTimer" type="Timer" parent="." unique_id=1371191846]
+unique_name_in_owner = true
+autostart = true

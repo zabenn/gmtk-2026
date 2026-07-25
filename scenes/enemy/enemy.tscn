@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ctmg7pstwigtx"]
+
+[ext_resource type="Script" uid="uid://j847imf5757l" path="res://scenes/enemy/enemy.gd" id="1_ek13r"]
+[ext_resource type="Script" uid="uid://cx45o6p487kci" path="res://scenes/enemy/hitbox_comp.gd" id="2_1gg35"]
+[ext_resource type="Script" uid="uid://br4kdw5vurpo4" path="res://scenes/enemy/health_comp.gd" id="3_nige3"]
+[ext_resource type="Texture2D" uid="uid://cmofa4u2e67xw" path="res://icon.svg" id="4_gbopb"]
+[ext_resource type="Script" uid="uid://boosnuv2u8pcn" path="res://scenes/enemy/hurtbox_comp.gd" id="5_m0esv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kykub"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_syy3r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_37n8o"]
+radius = 1.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=773616265]
+script = ExtResource("1_ek13r")
+
+[node name="HitboxComp" type="Area2D" parent="." unique_id=588500215]
+script = ExtResource("2_1gg35")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComp" unique_id=1669166762]
+shape = SubResource("CircleShape2D_kykub")
+
+[node name="HealthComp" type="Node2D" parent="." unique_id=258070088]
+script = ExtResource("3_nige3")
+
+[node name="AttackComp" type="Node2D" parent="." unique_id=1440351338]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=620230609]
+texture = ExtResource("4_gbopb")
+
+[node name="HurtboxComp" type="Area2D" parent="." unique_id=139794605]
+script = ExtResource("5_m0esv")
+
+[node name="HurtboxArea" type="CollisionShape2D" parent="HurtboxComp" unique_id=1357576820]
+shape = SubResource("CircleShape2D_syy3r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1769600744]
+shape = SubResource("CircleShape2D_37n8o")

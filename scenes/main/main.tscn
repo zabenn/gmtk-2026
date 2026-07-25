@@ -13,4 +13,5 @@ script = ExtResource("1_hyk8p")
 script = ExtResource("3_ow5a4")
 
 [node name="Interface" parent="." unique_id=2088915800 instance=ExtResource("4_hujxm")]
+visible = false
 script = ExtResource("5_yyfjg")
