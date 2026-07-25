@@ -1,0 +1,17 @@
+{
+  "[gdscript]": {
+    "editor.defaultFormatter": "EddieDover.gdscript-formatter-linter",
+    "editor.rulers": [100]
+  },
+  "godotFormatterAndLinter.gdformatPath": ".venv/bin/gdformat",
+  "godotFormatterAndLinter.gdlintPath": ".venv/bin/gdlint",
+  "godotFormatterAndLinter.lineLength": 100,
+  "files.exclude": {
+    ".godot": true,
+    ".venv": true,
+    "**/*.blend1": true,
+    "**/*.uid": true,
+    "uv.lock": true
+  },
+  "godotTools.editor.revealTerminal": false
+}
