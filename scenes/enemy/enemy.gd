@@ -19,28 +19,37 @@ var target: Node2D = null
 var _stunned_time: float = 0.0
 
 @onready var balloon_nub: BalloonNub = %BalloonNub
+@onready var collision_shape: CollisionShape2D = %CollisionShape2D
 
 var fully_spawned: bool = false
 
+var _pop_scene: PackedScene = preload("res://scenes/pop/pop.tscn")
+
 
 func _ready() -> void:
-	SignalBus.you_died_signal.connect(_game_over)
 	scale = Vector2(0.1, 0.1)
+	freeze = true
+	collision_shape.disabled = true
 
 
-func _game_over() -> void:
-	queue_free()  #delete the enemy so it doesnt crash game when player dies
+func pop() -> void:
+	var pop_effect: Pop = _pop_scene.instantiate()
+	get_parent().add_child(pop_effect)
+	pop_effect.global_position = global_position
+	if target and target.has_method("add_bonus_time"):
+		target.add_bonus_time(1.0)
+	queue_free()
 
 
 func _physics_process(delta: float) -> void:
-	if fully_spawned == false:
+	if not fully_spawned:
 		scale += Vector2(delta, delta)
-		freeze = true
-		if scale >= Vector2(1, 1):
-			fully_spawned = true
+		if scale.x >= 1.0:
 			scale = Vector2(1, 1)
-	if fully_spawned == true:
-		freeze = false
+			fully_spawned = true
+			freeze = false
+			collision_shape.disabled = false
+		return
 	if stunned:
 		_stunned_time += delta
 		if _stunned_time >= stun_duration:

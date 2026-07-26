@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bluxp7xhqc4ca"]
+
+[ext_resource type="Script" uid="uid://uotaediymfg1" path="res://scenes/killzone/killzone.gd" id="1_51ax6"]
+[ext_resource type="Material" uid="uid://b58hw2kjprbd1" path="res://resources/outline_and_grey.tres" id="1_i77c3"]
+[ext_resource type="Texture2D" uid="uid://dstvccunheho8" path="res://resources/nails.png" id="2_51ax6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqe1g"]
+size = Vector2(1800, 100)
+
+[node name="Killzone" type="Node2D" unique_id=192978110]
+script = ExtResource("1_51ax6")
+
+[node name="Nails" type="Sprite2D" parent="." unique_id=773565749]
+material = ExtResource("1_i77c3")
+scale = Vector2(0.8, 1.5)
+texture = ExtResource("2_51ax6")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=110854644]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=553267177]
+shape = SubResource("RectangleShape2D_aqe1g")
+debug_color = Color(0.9984836, 0, 0.15238956, 0.41960785)

@@ -3,8 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://xmtbiltsbo3c" path="res://scenes/world/world.tscn" id="2_6q06x"]
 [ext_resource type="Script" uid="uid://dlaaxbwovyq1h" path="res://scenes/world/world.gd" id="3_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://61dwntprhqo8" path="res://scenes/interface/interface.tscn" id="4_hujxm"]
+[ext_resource type="Script" uid="uid://cog20phnbbugp" path="res://scenes/main/main.gd" id="5_main"]
 
 [node name="Main" type="Node" unique_id=934790379]
+script = ExtResource("5_main")
 
 [node name="World" parent="." unique_id=1144776251 instance=ExtResource("2_6q06x")]
 unique_name_in_owner = true

@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://cb21awhlp5vja"]
+
+[ext_resource type="Theme" uid="uid://bspnwcgli2yra" path="res://resources/theme.tres" id="1_ces3l"]
+[ext_resource type="Script" uid="uid://dii57lduab3d4" path="res://scenes/start_menu/start_menu.gd" id="1_tj3dw"]
+[ext_resource type="Material" uid="uid://bohyqm8n8irco" path="res://resources/white_with_black_outline.tres" id="2_rudpn"]
+[ext_resource type="Material" uid="uid://dojwgp8valypm" path="res://resources/black_with_black_outline.tres" id="3_4v5wy"]
+[ext_resource type="Texture2D" uid="uid://ryc1q3th142l" path="res://resources/play.png" id="3_ifyap"]
+[ext_resource type="Material" uid="uid://qo54u2kb38da" path="res://resources/outline_and_red.tres" id="3_ujype"]
+
+[node name="StartMenu" type="Control" unique_id=1207151898]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tj3dw")
+
+[node name="SubViewportContainer4" type="SubViewportContainer" parent="." unique_id=692724399]
+material = ExtResource("3_ujype")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+mouse_target = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer4" unique_id=1719991682]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="SubViewportContainer4/SubViewport" unique_id=675021711]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="SubViewportContainer4/SubViewport/Control" unique_id=900709542]
+layout_mode = 0
+offset_top = 390.0
+offset_right = 1920.0
+offset_bottom = 2214.0
+theme = ExtResource("1_ces3l")
+theme_override_font_sizes/bold_font_size = 200
+bbcode_enabled = true
+text = "[b]BALLOON[/b]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=877805469]
+z_index = 94
+material = ExtResource("3_4v5wy")
+layout_mode = 0
+offset_left = 897.0
+offset_top = 831.0
+offset_right = 1013.0
+offset_bottom = 961.0
+mouse_filter = 2
+texture = ExtResource("3_ifyap")
+
+[node name="SubViewportContainer3" type="SubViewportContainer" parent="." unique_id=1089684363]
+material = ExtResource("2_rudpn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+mouse_target = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer3" unique_id=450476517]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="SubViewportContainer3/SubViewport" unique_id=1836747287]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewportContainer3/SubViewport/Control" unique_id=1617484465]
+layout_mode = 0
+offset_top = 250.0
+offset_right = 1920.0
+offset_bottom = 451.00012
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ces3l")
+theme_override_font_sizes/normal_font_size = 165
+text = "Ticking Time"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="SubViewportContainer3/SubViewport/Control" unique_id=726790218]
+layout_mode = 0
+offset_top = 570.0
+offset_right = 1920.0
+offset_bottom = 752.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ces3l")
+theme_override_font_sizes/normal_font_size = 50
+text = "A Game by Sam Cribbs and Ansel Chan"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="SubViewportContainer3/SubViewport/Control" unique_id=65804454]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 860.0
+offset_top = 800.0
+offset_right = 1060.0
+offset_bottom = 1000.0
+theme = ExtResource("1_ces3l")

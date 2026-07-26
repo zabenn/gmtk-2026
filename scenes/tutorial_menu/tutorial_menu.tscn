@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://g1ecq0ctmhvd"]
+
+[ext_resource type="Material" uid="uid://bohyqm8n8irco" path="res://resources/white_with_black_outline.tres" id="1_5inq8"]
+[ext_resource type="Script" uid="uid://bxomrdg1o8ikt" path="res://scenes/tutorial_menu/tutorial_menu.gd" id="1_341dy"]
+[ext_resource type="Theme" uid="uid://bspnwcgli2yra" path="res://resources/theme.tres" id="2_n4w0o"]
+[ext_resource type="Material" uid="uid://dojwgp8valypm" path="res://resources/black_with_black_outline.tres" id="3_ovn0x"]
+[ext_resource type="Texture2D" uid="uid://ryc1q3th142l" path="res://resources/play.png" id="4_341dy"]
+
+[node name="TutorialMenu" type="Control" unique_id=1040361439]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_341dy")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1760769341]
+z_index = 94
+material = ExtResource("3_ovn0x")
+layout_mode = 0
+offset_left = 897.0
+offset_top = 831.0
+offset_right = 1013.0
+offset_bottom = 961.0
+mouse_filter = 2
+texture = ExtResource("4_341dy")
+
+[node name="SubViewportContainer3" type="SubViewportContainer" parent="." unique_id=2081692458]
+material = ExtResource("1_5inq8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+mouse_target = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer3" unique_id=1438202494]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="SubViewportContainer3/SubViewport" unique_id=743018244]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewportContainer3/SubViewport/Control" unique_id=1358019320]
+clip_contents = false
+layout_mode = 0
+offset_left = 65.0
+offset_top = 102.0
+offset_right = 1865.0
+offset_bottom = 690.0
+theme = ExtResource("2_n4w0o")
+text = "Your balloon is losing air so use it wisely! Aim for other balloons and blow them onto the spikes to pop them and boost your score. The less air you have left, the harder and farther you can blow, so timing matters. Just don't run out of air completely, and watch out for getting knocked into the spikes yourself. Move with WASD, blow with Left Mouse."
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="SubViewportContainer3/SubViewport/Control" unique_id=909586615]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 860.0
+offset_top = 800.0
+offset_right = 1060.0
+offset_bottom = 1000.0
+theme = ExtResource("2_n4w0o")

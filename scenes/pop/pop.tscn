@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://vy2oepv3na2t"]
+
+[ext_resource type="Texture2D" uid="uid://pd1t2fbmh42t" path="res://resources/pop.png" id="2_mv8lg"]
+[ext_resource type="Material" uid="uid://br3sp6t0ry7f5" path="res://resources/pop_shader.tres" id="2_n3adv"]
+[ext_resource type="Script" uid="uid://0lbw6jukwavp" path="res://scenes/pop/pop.gd" id="3_pop"]
+
+[node name="Pop" type="Node2D" unique_id=326231180]
+script = ExtResource("3_pop")
+
+[node name="Pop" type="Sprite2D" parent="." unique_id=1329557096]
+material = ExtResource("2_n3adv")
+texture = ExtResource("2_mv8lg")

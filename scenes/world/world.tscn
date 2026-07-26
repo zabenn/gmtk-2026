@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://xmtbiltsbo3c"]
 
-[ext_resource type="PackedScene" uid="uid://b67qq8kbs6v6j" path="res://scenes/player/player.tscn" id="1_dphjl"]
+[ext_resource type="Script" uid="uid://dlaaxbwovyq1h" path="res://scenes/world/world.gd" id="1_1fp7r"]
 [ext_resource type="Shader" uid="uid://drp8v8k8kpqxv" path="res://resources/overlay.gdshader" id="2_1fp7r"]
-[ext_resource type="Texture2D" uid="uid://ccfrlhaufmfw2" path="res://resources/paper.jpg" id="2_sl2e5"]
-[ext_resource type="PackedScene" uid="uid://lvcr54lyawqe" path="res://scenes/world/killzone_area.tscn" id="2_sl2e5"]
+[ext_resource type="Texture2D" uid="uid://ccfrlhaufmfw2" path="res://resources/paper.jpg" id="6_t5ptc"]
 
 [sub_resource type="Gradient" id="Gradient_1fp7r"]
 colors = PackedColorArray(0.5294118, 0.80784315, 0.92156863, 1, 0.5294118, 0.80784315, 0.92156863, 1)
@@ -19,14 +18,10 @@ shader_parameter/opacity = 0.1
 shader_parameter/blend_mode = 0
 
 [node name="World" type="Node2D" unique_id=1144776251]
+script = ExtResource("1_1fp7r")
 
-[node name="EnemySpawnTimer" type="Timer" parent="." unique_id=1371191846]
-unique_name_in_owner = true
-
-[node name="KillzoneArea" parent="." unique_id=530283402 instance=ExtResource("2_sl2e5")]
-position = Vector2(115, 49)
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2042123581]
+[node name="Sky" type="Sprite2D" parent="." unique_id=2042123581]
+z_index = -1000
 position = Vector2(960, 540)
 texture = SubResource("GradientTexture2D_e270b")
 
@@ -35,8 +30,4 @@ z_index = 100
 material = SubResource("ShaderMaterial_1fp7r")
 position = Vector2(960, 540)
 scale = Vector2(2, 2)
-texture = ExtResource("2_sl2e5")
-
-[node name="Player" parent="." unique_id=148018357 instance=ExtResource("1_dphjl")]
-unique_name_in_owner = true
-position = Vector2(960, 540)
+texture = ExtResource("6_t5ptc")

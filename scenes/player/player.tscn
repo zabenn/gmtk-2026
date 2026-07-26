@@ -3,10 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dpbh18mmbs5ml" path="res://scenes/blast/blast.tscn" id="1_8afob"]
 [ext_resource type="Script" uid="uid://xn7pop03ev4r" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="PhysicsMaterial" uid="uid://dyfj7rjq0dvud" path="res://resources/physics_material.tres" id="1_gmlin"]
-[ext_resource type="Texture2D" uid="uid://cmofa4u2e67xw" path="res://icon.svg" id="3_gmlin"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_aqe1g"]
-radius = 25.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmlin"]
+radius = 50.0
 
 [node name="Player" type="RigidBody2D" unique_id=1068907026]
 physics_material_override = ExtResource("1_gmlin")
@@ -15,10 +14,7 @@ lock_rotation = true
 script = ExtResource("1_dovo2")
 
 [node name="Blast" parent="." unique_id=1017176358 instance=ExtResource("1_8afob")]
+unique_name_in_owner = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1025807487]
-shape = SubResource("CircleShape2D_aqe1g")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1316306260]
-scale = Vector2(0.375, 0.375)
-texture = ExtResource("3_gmlin")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1857006279]
+shape = SubResource("CircleShape2D_gmlin")

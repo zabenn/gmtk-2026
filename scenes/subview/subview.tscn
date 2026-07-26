@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dxin2cet4r57t"]
+
+[ext_resource type="Material" uid="uid://bohyqm8n8irco" path="res://resources/white_with_black_outline.tres" id="1_c2y04"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7ct1h"]
+viewport_path = NodePath("SubViewport")
+
+[node name="SubViewportContainer" type="TextureRect" unique_id=1198619205]
+material = ExtResource("1_c2y04")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_7ct1h")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=826865015]
+transparent_bg = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="SubViewport" unique_id=30079566]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1

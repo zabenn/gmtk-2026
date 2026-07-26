@@ -4,11 +4,22 @@ extends Node
 @onready var world: World = %World
 @onready var interface: Interface = %Interface
 
-func ready():
-	pass
 
-func _on_hitbox_comp_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+func _ready():
+	interface.tutorial_menu.start_button.pressed.connect(_on_tutorial_menu_start_button_pressed)
+	interface.lose_menu.start_button.pressed.connect(_on_lose_menu_start_button_pressed)
+	world.lost.connect(_on_world_lost)
 
-func _player_died():
-	pass
+
+func _on_tutorial_menu_start_button_pressed():
+	print("hi")
+	world.start()
+
+
+func _on_lose_menu_start_button_pressed():
+	world.start()
+
+
+func _on_world_lost():
+	interface.game_menu.hide()
+	interface.lose_menu.show()

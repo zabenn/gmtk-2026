@@ -1,0 +1,14 @@
+[gd_resource type="Theme" format=3 uid="uid://bspnwcgli2yra"]
+
+[ext_resource type="FontFile" uid="uid://crr0g32ny5jh2" path="res://resources/mochibop_bold.ttf" id="1_7ct1h"]
+[ext_resource type="StyleBox" uid="uid://b27nkqnvu4ugk" path="res://resources/new_style_box_flat.tres" id="1_886mr"]
+[ext_resource type="FontFile" uid="uid://1jgqgjv23dho" path="res://resources/mochibop.ttf" id="2_886mr"]
+
+[resource]
+Button/styles/focus = ExtResource("1_886mr")
+Button/styles/hover = ExtResource("1_886mr")
+Button/styles/normal = ExtResource("1_886mr")
+Button/styles/pressed = ExtResource("1_886mr")
+RichTextLabel/font_sizes/normal_font_size = 80
+RichTextLabel/fonts/bold_font = ExtResource("1_7ct1h")
+RichTextLabel/fonts/normal_font = ExtResource("2_886mr")

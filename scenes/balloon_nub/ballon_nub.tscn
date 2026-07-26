@@ -4,19 +4,6 @@
 [ext_resource type="Material" uid="uid://qo54u2kb38da" path="res://resources/outline_and_red.tres" id="2_4nwgc"]
 [ext_resource type="Texture2D" uid="uid://chfn7arlj3ujm" path="res://resources/baloon.png" id="2_cxsog"]
 [ext_resource type="Texture2D" uid="uid://csvgkft7k3r82" path="res://resources/nub.png" id="3_4nwgc"]
-[ext_resource type="Shader" uid="uid://bfjh72n8invpp" path="res://resources/outline.gdshader" id="5_m1t5k"]
-[ext_resource type="Texture2D" uid="uid://c3vuckcxwk2mg" path="res://resources/shine.png" id="6_xy6r7"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ob6iv"]
-shader = ExtResource("5_m1t5k")
-shader_parameter/maxLineWidth = 3.0000001425
-shader_parameter/minLineWidth = 2.0
-shader_parameter/speed = 5.0
-shader_parameter/blockSize = 20.0
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/overlapAmount = 0.0
-shader_parameter/textureColor = Color(1, 1, 1, 1)
-shader_parameter/tolerance = 0.9990000128746
 
 [node name="BalloonNub" type="Node2D" unique_id=1617723789]
 script = ExtResource("1_cxsog")
@@ -27,11 +14,6 @@ material = ExtResource("2_4nwgc")
 position = Vector2(-75, 0)
 texture = ExtResource("2_cxsog")
 offset = Vector2(60, 0)
-
-[node name="Shine" type="Sprite2D" parent="Balloon" unique_id=517973390]
-material = SubResource("ShaderMaterial_ob6iv")
-position = Vector2(82, -25)
-texture = ExtResource("6_xy6r7")
 
 [node name="Nub" type="Sprite2D" parent="." unique_id=68757744]
 unique_name_in_owner = true

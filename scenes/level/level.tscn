@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c2prdqxcpl0eo"]
+
+[ext_resource type="Script" uid="uid://dxu8pcjndt5oj" path="res://scenes/level/level.gd" id="1_i166f"]
+[ext_resource type="PackedScene" uid="uid://b67qq8kbs6v6j" path="res://scenes/player/player.tscn" id="1_nbgty"]
+[ext_resource type="PackedScene" uid="uid://bluxp7xhqc4ca" path="res://scenes/killzone/killzone.tscn" id="2_i166f"]
+
+[node name="Level" type="Node2D" unique_id=60761983]
+script = ExtResource("1_i166f")
+
+[node name="Player" parent="." unique_id=1068907026 instance=ExtResource("1_nbgty")]
+unique_name_in_owner = true
+position = Vector2(960, 540)
+
+[node name="Killzone" parent="." unique_id=192978110 instance=ExtResource("2_i166f")]
+position = Vector2(960, 0)
+
+[node name="Killzone2" parent="." unique_id=1864854280 instance=ExtResource("2_i166f")]
+position = Vector2(960, 1080)
+
+[node name="Killzone3" parent="." unique_id=580231081 instance=ExtResource("2_i166f")]
+position = Vector2(0, 540)
+rotation = 1.5707964
+
+[node name="Killzone4" parent="." unique_id=255638425 instance=ExtResource("2_i166f")]
+position = Vector2(1920, 540)
+rotation = 1.5707964
