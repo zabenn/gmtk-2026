@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://lvcr54lyawqe"]
 
 [ext_resource type="Script" uid="uid://dwskhnmfrwe17" path="res://scenes/world/killzone.gd" id="1_wlo2q"]
-[ext_resource type="Texture2D" uid="uid://d1ws37w0h7f8r" path="res://scenes/enemy/spikes.png" id="2_xr6bb"]
+[ext_resource type="Texture2D" uid="uid://d1ws37w0h7f8r" path="res://scenes/world/spikes.png" id="2_xr6bb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjvwu"]
 size = Vector2(235, 100)
