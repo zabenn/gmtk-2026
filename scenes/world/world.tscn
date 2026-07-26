@@ -1,12 +1,38 @@
 [gd_scene format=3 uid="uid://xmtbiltsbo3c"]
 
 [ext_resource type="PackedScene" uid="uid://b67qq8kbs6v6j" path="res://scenes/player/player.tscn" id="1_dphjl"]
+[ext_resource type="Shader" uid="uid://drp8v8k8kpqxv" path="res://resources/overlay.gdshader" id="2_1fp7r"]
+[ext_resource type="Texture2D" uid="uid://ccfrlhaufmfw2" path="res://resources/paper.jpg" id="2_sl2e5"]
+
+[sub_resource type="Gradient" id="Gradient_1fp7r"]
+colors = PackedColorArray(0.5294118, 0.80784315, 0.92156863, 1, 0.5294118, 0.80784315, 0.92156863, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e270b"]
+gradient = SubResource("Gradient_1fp7r")
+width = 1920
+height = 1080
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1fp7r"]
+shader = ExtResource("2_1fp7r")
+shader_parameter/opacity = 0.1
+shader_parameter/blend_mode = 0
 
 [node name="World" type="Node2D" unique_id=1144776251]
 
 [node name="EnemySpawnTimer" type="Timer" parent="." unique_id=1371191846]
 unique_name_in_owner = true
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2042123581]
+position = Vector2(960, 540)
+texture = SubResource("GradientTexture2D_e270b")
+
+[node name="Paper" type="Sprite2D" parent="." unique_id=1999902548]
+z_index = 100
+material = SubResource("ShaderMaterial_1fp7r")
+position = Vector2(960, 540)
+scale = Vector2(2, 2)
+texture = ExtResource("2_sl2e5")
 
 [node name="Player" parent="." unique_id=148018357 instance=ExtResource("1_dphjl")]
 unique_name_in_owner = true

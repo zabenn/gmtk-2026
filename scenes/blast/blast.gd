@@ -12,6 +12,8 @@ extends Node2D
 @export var attack_increase: float = -0.3
 @export var min_force: float = 500.0
 @export var max_force: float = 1000.0
+@export var min_balloon_scale: float = 1.5
+@export var max_balloon_scale: float = 0.3
 
 var start_damage_collision_fraction: float = -1.0:
 	set(value):
@@ -51,6 +53,7 @@ var _end_damage_visual_points: PackedVector2Array = []
 @onready var area2d: Area2D = %Area2D
 @onready var collision_polygon2d: CollisionPolygon2D = %CollisionPolygon2D
 @onready var polygon2d: Polygon2D = %Polygon2D
+@onready var balloon_nub: BalloonNub = %BalloonNub
 
 
 func _ready() -> void:
@@ -66,6 +69,9 @@ func _process(delta: float) -> void:
 	)
 	end_damage_visual_fraction += _visual_towards_collision(
 		end_damage_visual_fraction, end_damage_collision_fraction, delta
+	)
+	balloon_nub.balloon.scale = (
+		Vector2.ONE * lerp(min_balloon_scale, max_balloon_scale, end_damage_visual_fraction)
 	)
 
 

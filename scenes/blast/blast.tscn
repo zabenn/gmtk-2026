@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dpbh18mmbs5ml"]
 
 [ext_resource type="Script" uid="uid://b6hrebsq6gx0n" path="res://scenes/blast/blast.gd" id="1_358r1"]
+[ext_resource type="PackedScene" uid="uid://cg0e7ohktw0ej" path="res://scenes/balloon_nub/ballon_nub.tscn" id="2_ob6iv"]
 
 [node name="Blast" type="Node2D" unique_id=1017176358]
 script = ExtResource("1_358r1")
@@ -14,3 +15,7 @@ unique_name_in_owner = true
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=175608853]
 unique_name_in_owner = true
 color = Color(1, 0, 0, 0.38431373)
+
+[node name="BalloonNub" parent="." unique_id=1617723789 instance=ExtResource("2_ob6iv")]
+unique_name_in_owner = true
+rotation = 3.1415927

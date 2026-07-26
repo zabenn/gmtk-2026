@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://qo54u2kb38da"]
+
+[ext_resource type="Shader" uid="uid://bfjh72n8invpp" path="res://resources/outline.gdshader" id="1_3mt56"]
+
+[resource]
+shader = ExtResource("1_3mt56")
+shader_parameter/maxLineWidth = 6.0
+shader_parameter/minLineWidth = 2.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 20.0
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/overlapAmount = 2.0
+shader_parameter/textureColor = Color(1, 0, 0.21960784, 1)
+shader_parameter/tolerance = 0.5

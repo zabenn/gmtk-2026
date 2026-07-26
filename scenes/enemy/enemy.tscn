@@ -2,14 +2,8 @@
 
 [ext_resource type="PhysicsMaterial" uid="uid://dyfj7rjq0dvud" path="res://resources/physics_material.tres" id="1_cwlon"]
 [ext_resource type="Script" uid="uid://j847imf5757l" path="res://scenes/enemy/enemy.gd" id="1_ek13r"]
-[ext_resource type="Script" uid="uid://cx45o6p487kci" path="res://scenes/enemy/hitbox_comp.gd" id="2_1gg35"]
-[ext_resource type="Script" uid="uid://br4kdw5vurpo4" path="res://scenes/enemy/health_comp.gd" id="3_nige3"]
-[ext_resource type="Texture2D" uid="uid://cmofa4u2e67xw" path="res://icon.svg" id="4_gbopb"]
-[ext_resource type="Script" uid="uid://boosnuv2u8pcn" path="res://scenes/enemy/hurtbox_comp.gd" id="5_m0esv"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_kykub"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_syy3r"]
+[ext_resource type="PackedScene" uid="uid://cg0e7ohktw0ej" path="res://scenes/balloon_nub/ballon_nub.tscn" id="3_40wdo"]
+[ext_resource type="Material" uid="uid://d0556n8pvnjja" path="res://resources/outline_and_yellow.tres" id="4_tjssy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_37n8o"]
 radius = 25.0
@@ -19,26 +13,23 @@ physics_material_override = ExtResource("1_cwlon")
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_ek13r")
+max_speed = null
+acceleration = null
+friction = null
+stun_duration = null
 
-[node name="HitboxComp" type="Area2D" parent="." unique_id=588500215]
-script = ExtResource("2_1gg35")
+[node name="BalloonNub" parent="." unique_id=1617723789 instance=ExtResource("3_40wdo")]
+unique_name_in_owner = true
+modulate = Color(0.1254902, 1, 1, 1)
+scale = Vector2(0.5, 0.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComp" unique_id=1669166762]
-shape = SubResource("CircleShape2D_kykub")
+[node name="Balloon" parent="BalloonNub" index="0" unique_id=1465453529]
+material = ExtResource("4_tjssy")
 
-[node name="HealthComp" type="Node2D" parent="." unique_id=258070088]
-script = ExtResource("3_nige3")
-
-[node name="AttackComp" type="Node2D" parent="." unique_id=1440351338]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=620230609]
-texture = ExtResource("4_gbopb")
-
-[node name="HurtboxComp" type="Area2D" parent="." unique_id=139794605]
-script = ExtResource("5_m0esv")
-
-[node name="HurtboxArea" type="CollisionShape2D" parent="HurtboxComp" unique_id=1357576820]
-shape = SubResource("CircleShape2D_syy3r")
+[node name="Nub" parent="BalloonNub" index="1" unique_id=68757744]
+material = ExtResource("4_tjssy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1769600744]
 shape = SubResource("CircleShape2D_37n8o")
+
+[editable path="BalloonNub"]

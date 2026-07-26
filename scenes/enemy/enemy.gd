@@ -18,6 +18,8 @@ var target: Node2D = null
 
 var _stunned_time: float = 0.0
 
+@onready var balloon_nub: BalloonNub = %BalloonNub
+
 
 func _physics_process(delta: float) -> void:
 	if stunned:
@@ -30,6 +32,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if stunned:
 		return
 	var direction = global_position.direction_to(target.global_position)
+	balloon_nub.rotation = direction.angle()
 	state.apply_central_force(direction * acceleration)
 	state.linear_velocity = (
 		min(state.linear_velocity.length(), max_speed) * state.linear_velocity.normalized()
