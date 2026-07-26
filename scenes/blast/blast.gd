@@ -10,6 +10,8 @@ extends Node2D
 @export var visual_speed: float = 5.0
 @export var min_end_damage_collision_fraction: float = 0.2
 @export var attack_increase: float = -0.3
+@export var min_force: float = 500.0
+@export var max_force: float = 1000.0
 
 var start_damage_collision_fraction: float = -1.0:
 	set(value):
@@ -75,10 +77,26 @@ func _physics_process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		end_damage_collision_fraction = clamp(
-			end_damage_collision_fraction + attack_increase, min_end_damage_collision_fraction, 1.0
-		)
+	if event.is_action_pressed("player_blow"):
+		for body in area2d.get_overlapping_bodies():
+			print(body)
+			if body is Enemy:
+				var enemy: Enemy = body
+				enemy.stunned = true
+				enemy.apply_central_impulse(
+					(
+						lerp(
+							min_force,
+							max_force,
+							inverse_lerp(
+								min_radius,
+								max_radius,
+								global_position.distance_to(enemy.global_position)
+							)
+						)
+						* global_position.direction_to(enemy.global_position)
+					)
+				)
 
 
 func _visual_towards_collision(
@@ -102,7 +120,9 @@ func _arc_points(
 	var num_points: int = max(2, int(arc_length / point_distance))
 	var points: PackedVector2Array = []
 	for i in range(num_points):
-		var angle: float = lerp(start_angle, end_angle, float(i) / float(num_points - 1))
+		var angle: float = lerp(
+			start_angle, end_angle, inverse_lerp(0.0, float(num_points - 1), float(i))
+		)
 		var point: Vector2 = center_point + Vector2(cos(angle), sin(angle)) * radius
 		points.append(point)
 	return points

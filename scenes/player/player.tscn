@@ -2,11 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://dpbh18mmbs5ml" path="res://scenes/blast/blast.tscn" id="1_8afob"]
 [ext_resource type="Script" uid="uid://xn7pop03ev4r" path="res://scenes/player/player.gd" id="1_dovo2"]
+[ext_resource type="PhysicsMaterial" uid="uid://dyfj7rjq0dvud" path="res://resources/physics_material.tres" id="1_gmlin"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aqe1g"]
-radius = 50.0
+radius = 25.0
 
-[node name="Player" type="CharacterBody2D" unique_id=148018357]
+[node name="Player" type="RigidBody2D" unique_id=1068907026]
+physics_material_override = ExtResource("1_gmlin")
+gravity_scale = 0.0
+lock_rotation = true
 script = ExtResource("1_dovo2")
 
 [node name="Blast" parent="." unique_id=1017176358 instance=ExtResource("1_8afob")]

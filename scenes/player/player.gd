@@ -1,29 +1,17 @@
 class_name Player
-extends CharacterBody2D
+extends RigidBody2D
 
 @export var max_speed: float = 300.0
 @export var acceleration: float = 500.0
-@export var friction: float = 0.0
-@export var restitution: float = 3.0
-
-var _resolved_this_frame: bool = false
+@export var friction: float = 1.0
 
 
-func _physics_process(delta: float) -> void:
-	if _resolved_this_frame:
-		_resolved_this_frame = false
-		return
-
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	var direction = Input.get_vector("player_left", "player_right", "player_up", "player_down")
 	if direction != Vector2.ZERO:
-		velocity = velocity.move_toward(direction * max_speed, acceleration * delta)
+		state.apply_central_force(direction * acceleration)
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
-
-	var collision_info = move_and_collide(velocity * delta)
-	if collision_info:
-		var collider = collision_info.get_collider()
-		var normal = collision_info.get_normal()
-		velocity = restitution * velocity.bounce(normal)
-		collider.velocity = collider.restitution * collider.velocity.bounce(-normal)
-		collider._resolved_this_frame = true
+		state.apply_central_force(-state.linear_velocity * friction)
+	state.linear_velocity = (
+		min(state.linear_velocity.length(), max_speed) * state.linear_velocity.normalized()
+	)

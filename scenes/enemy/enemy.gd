@@ -1,31 +1,40 @@
 class_name Enemy
-extends CharacterBody2D
+extends RigidBody2D
 
-@export var force: float = 200.0
 @export var max_speed: float = 300.0
 @export var acceleration: float = 500.0
 @export var friction: float = 0.0
-@export var restitution: float = 1.0
-var target: Player = null
+@export var stun_duration: float = 0.5
 
-var _resolved_this_frame: bool = false
+var stunned: bool = false:
+	set(value):
+		var old_value: bool = stunned
+		if old_value == value:
+			return
+		stunned = value
+		_set_stunned(old_value)
+
+var target: Node2D = null
+
+var _stunned_time: float = 0.0
 
 
 func _physics_process(delta: float) -> void:
-	if _resolved_this_frame:
-		_resolved_this_frame = false
+	if stunned:
+		_stunned_time += delta
+		if _stunned_time >= stun_duration:
+			stunned = false
+
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if stunned:
 		return
-
 	var direction = global_position.direction_to(target.global_position)
-	if direction != Vector2.ZERO:
-		velocity = velocity.move_toward(direction * max_speed, acceleration * delta)
-	else:
-		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+	state.apply_central_force(direction * acceleration)
+	state.linear_velocity = (
+		min(state.linear_velocity.length(), max_speed) * state.linear_velocity.normalized()
+	)
 
-	var collision_info = move_and_collide(velocity * delta)
-	if collision_info:
-		var collider = collision_info.get_collider()
-		var normal = collision_info.get_normal()
-		velocity = restitution * velocity.bounce(normal)
-		collider.velocity = collider.restitution * collider.velocity.bounce(-normal)
-		collider._resolved_this_frame = true
+
+func _set_stunned(_old_value: bool) -> void:
+	_stunned_time = 0.0
