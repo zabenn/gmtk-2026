@@ -1,9 +1,12 @@
 class_name World
 extends Node2D
 
+@export var spawn_time: float = 5
+
+var _enemy_scene: PackedScene = preload("res://scenes/enemy/enemy.tscn")
+
+@onready var player: Player = %Player
 @onready var enemy_spawn_timer: Timer = %EnemySpawnTimer
-@onready var enemy_scene = preload("res://scenes/enemy/enemy.tscn")
-@export var spawn_time := 5
 
 
 func _ready():
@@ -12,9 +15,7 @@ func _ready():
 
 
 func _on_timer_timeout():
-	var enemy_spawnpoint = Vector2(randf_range(100, 1800), randf_range(100, 960))
-	var enemy = enemy_scene.instantiate()
-	#add a timer to spawn enemies with like a shadow to telegraph
-	enemy.global_position = enemy_spawnpoint
+	var enemy = _enemy_scene.instantiate()
+	enemy.global_position = Vector2(randf_range(100, 1800), randf_range(100, 960))
+	enemy.target = player
 	add_child(enemy)
-	spawn_time = randf_range(0, 2)

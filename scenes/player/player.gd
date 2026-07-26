@@ -1,12 +1,10 @@
-class_name Enemy
+class_name Player
 extends CharacterBody2D
 
-@export var force: float = 200.0
 @export var max_speed: float = 300.0
 @export var acceleration: float = 500.0
 @export var friction: float = 0.0
-@export var restitution: float = 1.0
-var target: Player = null
+@export var restitution: float = 3.0
 
 var _resolved_this_frame: bool = false
 
@@ -16,7 +14,7 @@ func _physics_process(delta: float) -> void:
 		_resolved_this_frame = false
 		return
 
-	var direction = global_position.direction_to(target.global_position)
+	var direction = Input.get_vector("player_left", "player_right", "player_up", "player_down")
 	if direction != Vector2.ZERO:
 		velocity = velocity.move_toward(direction * max_speed, acceleration * delta)
 	else:
