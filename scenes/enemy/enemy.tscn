@@ -32,6 +32,7 @@ script = ExtResource("3_nige3")
 [node name="AttackComp" type="Node2D" parent="." unique_id=1440351338]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=620230609]
+scale = Vector2(0.375, 0.375)
 texture = ExtResource("4_gbopb")
 
 [node name="HurtboxComp" type="Area2D" parent="." unique_id=139794605]

@@ -4,14 +4,15 @@ extends Node2D
 @export var visual_point_distance: float = 5.0
 @export_range(0.0, 360.0, 0.1, "radians_as_degrees") var min_angle: float = PI / 4.0
 @export_range(0.0, 360.0, 0.1, "radians_as_degrees") var max_angle: float = PI / 4.0
-@export_range(0.0, 1000.0, 50.0) var min_radius: float = 100.0
-@export_range(0.0, 1000.0, 50.0) var max_radius: float = 600.0
+@export_range(0.0, 1000.0, 50.0) var min_radius: float = 35.0
+@export_range(0.0, 1000.0, 50.0) var max_radius: float = 500.0
 @export var damage_speed: float = 0.2
 @export var visual_speed: float = 5.0
 @export var min_end_damage_collision_fraction: float = 0.2
 @export var attack_increase: float = -0.3
 @export var min_force: float = 500.0
 @export var max_force: float = 1000.0
+@export var blow_cooldown: float = 0.75
 
 var start_damage_collision_fraction: float = -1.0:
 	set(value):
@@ -52,6 +53,7 @@ var _end_damage_visual_points: PackedVector2Array = []
 @onready var collision_polygon2d: CollisionPolygon2D = %CollisionPolygon2D
 @onready var polygon2d: Polygon2D = %Polygon2D
 
+var blow_cd : bool = false
 
 func _ready() -> void:
 	start_damage_collision_fraction = 0.0
@@ -78,26 +80,31 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("player_blow"):
-		for body in area2d.get_overlapping_bodies():
-			print(body)
-			if body is Enemy:
-				var enemy: Enemy = body
-				enemy.stunned = true
-				enemy.apply_central_impulse(
-					(
-						lerp(
-							min_force,
-							max_force,
-							inverse_lerp(
-								min_radius,
-								max_radius,
-								global_position.distance_to(enemy.global_position)
+		if blow_cd == false:
+			modulate.a = 0.5
+			blow_cd = true
+			for body in area2d.get_overlapping_bodies():
+				#print(body)
+				if body is Enemy:
+					var enemy: Enemy = body
+					enemy.stunned = true
+					enemy.apply_central_impulse(
+						(
+							lerp(
+								min_force,
+								max_force,
+								inverse_lerp(
+									min_radius,
+									max_radius,
+									global_position.distance_to(enemy.global_position)
+								)
 							)
+							* global_position.direction_to(enemy.global_position)
 						)
-						* global_position.direction_to(enemy.global_position)
 					)
-				)
-
+			await get_tree().create_timer(blow_cooldown).timeout
+			blow_cd = false
+			modulate.a = 1
 
 func _visual_towards_collision(
 	visual_fraction: float, collision_fraction: float, delta: float

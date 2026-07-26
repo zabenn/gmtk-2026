@@ -2,7 +2,7 @@ class_name Enemy
 extends RigidBody2D
 
 @export var max_speed: float = 300.0
-@export var acceleration: float = 500.0
+@export var acceleration: float = 500.0 
 @export var friction: float = 0.0
 @export var stun_duration: float = 0.5
 
@@ -30,13 +30,12 @@ func _game_over() -> void:
 func _physics_process(delta: float) -> void:
 	if fully_spawned == false:
 		scale += Vector2(delta,delta)
+		freeze = true
 		if scale >= Vector2(1,1):
 			fully_spawned = true
 			scale = Vector2(1,1)
 	if fully_spawned == true:
-		if _resolved_this_frame:
-			_resolved_this_frame = false
-			return
+		freeze = false
 	if stunned:
 		_stunned_time += delta
 		if _stunned_time >= stun_duration:

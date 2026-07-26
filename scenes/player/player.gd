@@ -2,7 +2,7 @@ class_name Player
 extends RigidBody2D
 
 @export var max_speed: float = 300.0
-@export var acceleration: float = 500.0
+@export var acceleration: float = 600.0
 @export var friction: float = 1.0
 
 var _resolved_this_frame: bool = false
