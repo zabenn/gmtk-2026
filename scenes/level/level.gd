@@ -2,10 +2,13 @@ class_name Level
 extends Node2D
 
 signal lost
+signal score_changed(points: int)
 
-@export var initial_spawn_time: float = 3.0
-@export var min_spawn_time: float = 1.0
-@export var ramp_duration: float = 60.0
+const POINTS_PER_POP: int = 100
+
+@export var initial_spawn_time: float = 1.2
+@export var min_spawn_time: float = 0.3
+@export var ramp_duration: float = 45.0
 @export var border_offset := 300
 
 var points: int = 0
@@ -28,6 +31,11 @@ func _on_player_popped() -> void:
 	lost.emit()
 
 
+func _on_enemy_popped() -> void:
+	points += POINTS_PER_POP
+	score_changed.emit(points)
+
+
 func _physics_process(delta: float) -> void:
 	_elapsed_time += delta
 	_spawn_timer += delta
@@ -44,3 +52,4 @@ func _physics_process(delta: float) -> void:
 		add_child(enemy)
 		enemy.global_position = enemy_spawnpoint
 		enemy.target = player
+		enemy.popped.connect(_on_enemy_popped)

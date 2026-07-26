@@ -1,10 +1,13 @@
 class_name Enemy
 extends RigidBody2D
 
+signal popped
+
 @export var max_speed: float = 300.0
 @export var acceleration: float = 500.0
 @export var friction: float = 0.0
 @export var stun_duration: float = 0.5
+@export var bonus_time_reward: float = 3.0
 
 var stunned: bool = false:
 	set(value):
@@ -37,7 +40,8 @@ func pop() -> void:
 	get_parent().add_child(pop_effect)
 	pop_effect.global_position = global_position
 	if target and target.has_method("add_bonus_time"):
-		target.add_bonus_time(1.0)
+		target.add_bonus_time(bonus_time_reward)
+	popped.emit()
 	queue_free()
 
 
