@@ -11,7 +11,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_syy3r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_37n8o"]
-radius = 1.0
+radius = 64.070274
 
 [node name="Enemy" type="CharacterBody2D" unique_id=773616265]
 script = ExtResource("1_ek13r")

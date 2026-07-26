@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Enemy
 # @onready var player
 
 func _physics_process(delta: float) -> void:

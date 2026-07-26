@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://xmtbiltsbo3c" path="res://scenes/world/world.tscn" id="2_6q06x"]
 [ext_resource type="Script" uid="uid://dlaaxbwovyq1h" path="res://scenes/world/world.gd" id="3_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://61dwntprhqo8" path="res://scenes/interface/interface.tscn" id="4_hujxm"]
-[ext_resource type="Script" uid="uid://cwbln8600fdne" path="res://scenes/interface/interface.gd" id="5_yyfjg"]
 
 [node name="Main" type="Node" unique_id=934790379]
 script = ExtResource("1_hyk8p")
@@ -13,5 +12,3 @@ script = ExtResource("1_hyk8p")
 script = ExtResource("3_ow5a4")
 
 [node name="Interface" parent="." unique_id=2088915800 instance=ExtResource("4_hujxm")]
-visible = false
-script = ExtResource("5_yyfjg")
