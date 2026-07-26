@@ -6,12 +6,12 @@ extends Control
 @onready var game_over_menu: PanelContainer = %GameOverMenu
 @onready var start_menu: PanelContainer = %StartMenu
 
-signal start_game_signal
 
 func _ready():
 	game_over_menu.hide()
 	quit_button.pressed.connect(_quit_button_pressed)
 	retry_button.pressed.connect(_retry_button_pressed)
+	SignalBus.you_died_signal.connect(_player_died)
 	
 func _player_died():
 	game_over_menu.show()
@@ -27,5 +27,6 @@ func _quit_button_pressed():
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		start_game_signal.emit()
+		SignalBus.game_start_signal.emit()
 		start_menu.hide()
+		

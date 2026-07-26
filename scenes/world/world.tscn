@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://xmtbiltsbo3c"]
 
-[ext_resource type="PackedScene" uid="uid://dpbh18mmbs5ml" path="res://scenes/blast/blast.tscn" id="1_dphjl"]
+[ext_resource type="PackedScene" uid="uid://b67qq8kbs6v6j" path="res://scenes/player/player.tscn" id="1_dphjl"]
 [ext_resource type="PackedScene" uid="uid://lvcr54lyawqe" path="res://scenes/world/killzone_area.tscn" id="2_sl2e5"]
 
 [node name="World" type="Node2D" unique_id=1144776251]
 
-[node name="Blast" parent="." unique_id=1017176358 instance=ExtResource("1_dphjl")]
-position = Vector2(960, 540)
-
 [node name="EnemySpawnTimer" type="Timer" parent="." unique_id=1371191846]
 unique_name_in_owner = true
-autostart = true
 
 [node name="KillzoneArea" parent="." unique_id=530283402 instance=ExtResource("2_sl2e5")]
 position = Vector2(115, 49)
+
+[node name="Player" parent="." unique_id=148018357 instance=ExtResource("1_dphjl")]
+unique_name_in_owner = true
+position = Vector2(960, 540)
