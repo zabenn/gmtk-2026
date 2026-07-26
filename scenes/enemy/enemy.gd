@@ -20,8 +20,27 @@ var _stunned_time: float = 0.0
 
 @onready var balloon_nub: BalloonNub = %BalloonNub
 
+var fully_spawned: bool = false
+
+
+func _ready() -> void:
+	SignalBus.you_died_signal.connect(_game_over)
+	scale = Vector2(0.1, 0.1)
+
+
+func _game_over() -> void:
+	queue_free()  #delete the enemy so it doesnt crash game when player dies
+
 
 func _physics_process(delta: float) -> void:
+	if fully_spawned == false:
+		scale += Vector2(delta, delta)
+		freeze = true
+		if scale >= Vector2(1, 1):
+			fully_spawned = true
+			scale = Vector2(1, 1)
+	if fully_spawned == true:
+		freeze = false
 	if stunned:
 		_stunned_time += delta
 		if _stunned_time >= stun_duration:
